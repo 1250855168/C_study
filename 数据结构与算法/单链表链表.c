@@ -44,13 +44,13 @@ int List_back();
 void Pop_back();
 /**
  * @brief 找到第一个元素
- * 
- * @return int 
+ *
+ * @return int
  */
 int list_front();
 /**
  * @brief 删除第一个元素
- * 
+ *
  */
 void Pop_front();
 
@@ -133,31 +133,31 @@ void Pop_back()
     Node *temp = head;
     while (current->next != NULL)
     {
-        temp=current;
-        current=current->next;
+        temp = current;
+        current = current->next;
     }
-    temp->next=NULL;
+    temp->next = NULL;
 }
 
 int list_front()
 {
-   if (head==NULL)
-   {
-    return 0;
-   }
-   else
-   {
-    return head->data;
-   }
+    if (head == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        return head->data;
+    }
 }
 void Pop_front()
 {
-   if (head==NULL)
-   {
-    return 0;
-   }
-   else
-   {
-    head=head->next;
-   }
+    if (head == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        head = head->next;
+    }
 }
