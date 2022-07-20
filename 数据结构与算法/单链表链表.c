@@ -53,6 +53,23 @@ int list_front();
  *
  */
 void Pop_front();
+/**
+ * @brief 反转一个单链表
+ *
+ */
+void Reveserlist();
+/**
+ * @brief 反转链表a-b区间
+ *
+ * @param a 第a个链表
+ * @param b 第b个链表
+ */
+void AnyReveserlist(int a, int b);
+/**
+ * @brief 链表的长度
+ *
+ */
+int SieofList();
 
 int main()
 {
@@ -61,6 +78,13 @@ int main()
         Creatlinkedlist();
     }
     PrintLinkedlist();
+    Reveserlist();
+    printf("%d\n", List_back());
+    Pop_back();
+    printf("%d\n", List_back());
+    printf("%d\n",list_front());
+    Pop_front();
+    printf("%d\n",list_front());
     FreeLinkedlist();
 
     return 0;
@@ -136,6 +160,7 @@ void Pop_back()
         temp = current;
         current = current->next;
     }
+    free(temp->next);
     temp->next = NULL;
 }
 
@@ -154,10 +179,73 @@ void Pop_front()
 {
     if (head == NULL)
     {
-        return 0;
+        return;
     }
     else
     {
+        Node *temp = head;
         head = head->next;
+        free(temp);
+        temp = NULL;
     }
 }
+
+void Reveserlist()
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return;
+    }
+    else
+    {
+        Node *temp = head;
+        Node *current = head->next;
+        Node *currentNext = NULL;
+        temp->next = NULL;
+        while (current->next != NULL)
+        {
+            currentNext = current->next;
+            current->next = temp;
+            temp = current;
+            current = currentNext;
+        }
+        current->next = temp;
+        head = current;
+    }
+}
+
+int SieofList()
+{
+    Node *temp = head;
+    int x = 0;
+    while (temp != NULL)
+    {
+        x++;
+        temp = temp->next;
+    }
+    return x;
+}
+
+// void AnyReveserlist(int a, int b)
+// {
+//     if ((a > 0) && (a < SieofList()) && (b > 0) && (b < SieofList()))
+//     {
+//         return;
+//     }
+//     else
+//     {
+//         Node *temp = head;
+//         Node *current = head->next;
+//         Node *currentNext = NULL;
+//         temp->next = NULL;
+//         while (current->next != NULL)
+//         {
+//             currentNext = current->next;
+//             current->next = temp;
+//             temp = current;
+//             current = currentNext;
+//         }
+//         current->next = temp;
+//         head = current;
+//     }
+// }

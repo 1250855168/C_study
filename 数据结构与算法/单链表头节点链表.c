@@ -138,6 +138,7 @@ void Pop_back(Node *head)
         temp = current;
         current = current->next;
     }
+    free(temp->next);
     temp->next = NULL;
 }
 int list_front(Node *head)
@@ -160,6 +161,9 @@ int Pop_front(Node *head)
     }
     else
     {
+        Node*temp=head->next;
         head = head->next->next;
+        free(temp);
+        temp=NULL;
     }
 }

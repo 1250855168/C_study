@@ -32,6 +32,27 @@ void PrintLinkedCirlist(Node *head);
  *
  */
 void FreeLinkedCirlist(Node *head);
+/**
+ * @brief 找到链表的最后一个元素
+ *
+ */
+int List_back(Node *head);
+/**
+ * @brief 删除最后一个元素
+ *
+ */
+void Pop_back(Node *head);
+/**
+ * @brief 找到第一个元素
+ *
+ * @return int
+ */
+int list_front(Node *head);
+/**
+ * @brief 删除第一个元素
+ *
+ */
+int Pop_front(Node *head);
 
 int main()
 {
@@ -105,4 +126,52 @@ void FreeLinkedCirlist(Node *head)
     }
     free(head);
     head = NULL;
+}
+
+int List_back(Node *head)
+{
+    Node *current = head->next;
+    while (current->next != NULL)
+    {
+        current = current->next;
+    }
+    return current->data;
+}
+void Pop_back(Node *head)
+{
+    Node *current = head->next;
+    Node *temp = head->next;
+    while (current->next != NULL)
+    {
+        temp = current;
+        current = current->next;
+    }
+    free(temp->next);
+    temp->next = NULL;
+}
+int list_front(Node *head)
+{
+    if (head->next == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        return head->next->data;
+    }
+}
+
+int Pop_front(Node *head)
+{
+    if (head->next == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        Node*temp=head->next;
+        head = head->next->next;
+        free(temp);
+        temp=NULL;
+    }
 }
