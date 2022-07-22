@@ -4,39 +4,128 @@
  * @brief 数学表达式运算
  *
  */
-void Mathematical_operation();
-linkedlistqueue *Iinit()
-{
-    linkedlistqueue *temp = malloc(sizeof(linkedlistqueue));
-    temp->front = NULL;
-    temp->rear = NULL;
-}
-Node *linkedliststack=NULL;
+int Mathematical_operation(Node *linkedliststack, Linkedlistqueue *linkedlistqueue, const unsigned char *expr);
+/**
+ * @brief 初始化 queue 链表
+ *
+ * @return struct Linkedlistqueue*
+ */
+struct Linkedlistqueue *Iinit();
+/**
+ * @brief 判断数学运算符的优先级
+ *
+ * @param expr
+ * @return int
+ */
+int Prioperate(unsigned char expr);
+void Ope_mid_past(Node *linkedliststack, Linkedlistqueue *linkedlistqueue, const unsigned char *expr);
+
+Node *linkedliststack = NULL;
+struct Linkedlistqueue *linkedlistqueue = NULL;
+
 int main()
 {
-    linkedlistqueue*linkedlistqueue = Iinit();
-    push_linkedliststack('A');
-    push_linkedliststack('B');
-    push_linkedliststack('C');
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%c\n", top_linkedliststack());
-        pop_linkedliststack();
-    }
-    printf("%d\n", Isemptystack(linkedliststack));
-    Push_linkedlistqueue(linkedlistqueue, 'D');
-    Push_linkedlistqueue(linkedlistqueue, 'E');
-    Push_linkedlistqueue(linkedlistqueue, 'F');
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%c\n", front_linkedlistqueue(linkedlistqueue));
-        Pop_linkedlistqueue(linkedlistqueue);
-    }
-    printf("%d\n", Isemptyqueue(linkedlistqueue));
-
+    linkedlistqueue = Iinit();
+    const unsigned char *expr = "1+2*5+6/6+9*7";
+    printf("%d\n", Mathematical_operation(linkedliststack, linkedlistqueue, expr));
     return 0;
 }
 
-void Mathematical_operation()
+struct Linkedlistqueue *Iinit()
 {
+    struct Linkedlistqueue *temp = malloc(sizeof(linkedlistqueue));
+    temp->front = NULL;
+    temp->rear = NULL;
+}
+int Prioperate(unsigned char expr)
+{
+    if (expr == '-' || expr == '+')
+    {
+        return 1;
+    }
+    if (expr == '*' || expr == '/')
+    {
+        return 2;
+    }
+}
+
+void Ope_mid_past(Node *linkedliststack, Linkedlistqueue *linkedlistqueue, const unsigned char *expr)
+{
+    for (int i = 0; expr[i] != '\0'; i++)
+    {
+        if (expr[i] >= '0' && expr[i] <= '9')
+        {
+            Push_linkedlistqueue(expr[i]);
+        }
+        else
+        {
+            if (Isemptystack())
+            {
+                push_linkedliststack(expr[i]);
+            }
+            else
+            {
+                if (Prioperate(expr[i]) > Prioperate(top_linkedliststack()))
+                {
+                    push_linkedliststack(expr[i]);
+                }
+                else
+                {
+                    Push_linkedlistqueue(top_linkedliststack());
+                    pop_linkedliststack();
+                    push_linkedliststack(expr[i]);
+                }
+            }
+        }
+    }
+    while (!Isemptystack())
+    {
+        Push_linkedlistqueue(top_linkedliststack());
+        pop_linkedliststack();
+    }
+}
+int Easy_mathoperate(int left, int right, unsigned char expr)
+{
+    switch (expr)
+    {
+    case '*':
+        return left * right;
+        break;
+    case '/':
+        return left / right;
+        break;
+    case '+':
+        return left + right;
+        break;
+    case '-':
+        return left - right;
+        break;
+    default:
+        break;
+    }
+}
+int Mathematical_operation(Node *linkedliststack, Linkedlistqueue *linkedlistqueue, const unsigned char *expr)
+{
+    Ope_mid_past(linkedliststack, linkedlistqueue, expr);
+    while (!Isemptyqueue())
+    {
+        if (front_linkedlistqueue() >= '0' && front_linkedlistqueue() <= '9')
+        {
+            push_linkedliststack(front_linkedlistqueue());
+            Pop_linkedlistqueue();
+        }
+        else
+        {
+            int right = top_linkedliststack() - 48;
+            pop_linkedliststack();
+            int left = top_linkedliststack() - 48;
+            pop_linkedliststack();
+            int new = Easy_mathoperate(left, right, front_linkedlistqueue());
+            Pop_linkedlistqueue();
+            push_linkedliststack(new + 48);
+        }
+    }
+    int tmep = top_linkedliststack();
+    pop_linkedliststack();
+    return tmep - 48;
 }

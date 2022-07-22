@@ -1,6 +1,6 @@
 #include "mathematical operation.h"
 
-void Firstcreat_linkedlistqueue(linkedlistqueue *linkedlistqueue, char x)
+void Firstcreat_linkedlistqueue(char x)
 {
     Node *p = malloc(sizeof(Node));
     p->data = x;
@@ -9,11 +9,11 @@ void Firstcreat_linkedlistqueue(linkedlistqueue *linkedlistqueue, char x)
     linkedlistqueue->rear = p;
 }
 
-void Push_linkedlistqueue(linkedlistqueue *linkedlistqueue, char x)
+void Push_linkedlistqueue(char x)
 {
     if (linkedlistqueue->front == NULL && linkedlistqueue->rear == NULL)
     {
-        Firstcreat_linkedlistqueue(linkedlistqueue, x);
+        Firstcreat_linkedlistqueue(x);
     }
     else
     {
@@ -25,7 +25,7 @@ void Push_linkedlistqueue(linkedlistqueue *linkedlistqueue, char x)
     }
 }
 
-int Pop_linkedlistqueue(linkedlistqueue *linkedlistqueue)
+int Pop_linkedlistqueue()
 {
     if (linkedlistqueue->front == NULL)
     {
@@ -40,7 +40,7 @@ int Pop_linkedlistqueue(linkedlistqueue *linkedlistqueue)
         temp = NULL;
     }
 }
-char front_linkedlistqueue(linkedlistqueue *linkedlistqueue)
+char front_linkedlistqueue()
 {
     if (linkedlistqueue->front == NULL)
     {
@@ -52,7 +52,7 @@ char front_linkedlistqueue(linkedlistqueue *linkedlistqueue)
         return linkedlistqueue->front->data;
     }
 }
-int Isemptyqueue(linkedlistqueue *linkedlistqueue)
+int Isemptyqueue()
 {
     if (linkedlistqueue->front == NULL)
     {

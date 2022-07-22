@@ -10,43 +10,44 @@ typedef struct Node
     struct Node *next;
 } Node;
 
-typedef struct linkedlistqueue
+typedef struct Linkedlistqueue
 {
     Node *front;
     Node *rear;
-} linkedlistqueue;
+} Linkedlistqueue;
 extern Node *linkedliststack;
+extern struct Linkedlistqueue*linkedlistqueue;
 /**
  * @brief 创建第一个队列
  *
  * @param linkedlistqueu
  */
-void Firstcreat_linkedlistqueue(linkedlistqueue *linkedlistqueu, char x);
+void Firstcreat_linkedlistqueue(char x);
 /**
  * @brief 入队
  *
  * @return linkedlistqueue*
  */
-void Push_linkedlistqueue(linkedlistqueue *linkedlistqueu, char x);
+void Push_linkedlistqueue(char x);
 /**
  * @brief 出队
  *
  */
-int Pop_linkedlistqueue(linkedlistqueue *linkedlistqueu);
+int Pop_linkedlistqueue();
 /**
  * @brief 第一个元素
  *
  * @param linkedlistqueu
  * @return int
  */
-char front_linkedlistqueue(linkedlistqueue *linkedlistqueu);
+char front_linkedlistqueue();
 /**
  * @brief 判断是否为空队列
  * 
  * @param linkedlistqueu 
  * @return int 
  */
-int Isemptyqueue(linkedlistqueue *linkedlistqueu);
+int Isemptyqueue();
 
 /**
  * @brief 建立第一个链表
