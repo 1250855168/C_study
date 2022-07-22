@@ -31,6 +31,12 @@ void pop_linkedliststack();
  */
 int top_linkedliststack();
 
+/**
+ * @brief 判断是否为空栈
+ * 
+ */
+int Isempty_linkedliststack();
+
 int main()
 {
 
@@ -95,11 +101,25 @@ int top_linkedliststack()
 {
     if (top == NULL)
     {
-        printf("This is tmpty stack!");
-        return;
+        printf("This is tmpty stack:");
+        return 0;
     }
     else
     {
         return top->data;
     }
+}
+
+
+int Isempty_linkedliststack()
+{
+    if (top == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
 }
