@@ -1,73 +1,5 @@
+#include"headlinkedlist.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Node
-{
-    int data;
-    struct Node *next;
-} Node;
-
-/**
- * @brief 建立第一个链表
- *
- * @param data 接收的数据
- * @return Node* 返回一个struct Node *
- */
-Node *Firstcreat();
-/**
- * @brief 创建一个链表
- *
- * @param data
- */
-Node *Creatlinkedlist(Node *head);
-/**
- * @brief 遍历链表
- *
- */
-void PrintLinkedlist(Node *head);
-/**
- *
- * @brief 释放链表
- *
- */
-void FreeLinkedlist(Node *head);
-/**
- * @brief 找到链表的最后一个元素
- *
- */
-int List_back(Node *head);
-/**
- * @brief 删除最后一个元素
- *
- */
-void Pop_back(Node *head);
-/**
- * @brief 找到第一个元素
- *
- * @return int
- */
-int list_front(Node *head);
-/**
- * @brief 删除第一个元素
- *
- */
-int Pop_front(Node *head);
-
-int main()
-{
-    struct Node *head = (Node *)malloc(sizeof(Node));
-    for (int i = 0; i < 10; i++)
-    {
-        head = Creatlinkedlist(head);
-    }
-    PrintLinkedlist(head);
-    printf("%d\n", List_back(head));
-    Pop_back(head);
-    printf("%d\n", List_back(head));
-    FreeLinkedlist(head);
-    return 0;
-}
 
 Node *Firstcreat()
 {
@@ -78,9 +10,9 @@ Node *Firstcreat()
     return p;
 }
 
-Node *Creatlinkedlist(Node *head)
+void Creatlinkedlist(Node *head)
 {
-    if (head == NULL)
+    if (head->next == NULL)
     {
         head->next = Firstcreat(head);
     }
@@ -93,13 +25,12 @@ Node *Creatlinkedlist(Node *head)
         p->next = head->next;
         head->next = p;
     }
-    return head;
 }
 
 void PrintLinkedlist(Node *head)
 {
     Node *current = head->next;
-    while (current != NULL)
+    while (current!= NULL)
     {
         printf("%d\n", current->data);
         current = current->next;

@@ -1,59 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Node
-{
-    int data;
-    struct Node *next;
-} Node;
-
-Node *top = NULL;
-/**
- * @brief 建立第一个链表
- *
- * @param data 接收的数据
- * @return Node* 返回一个struct Node *
- */
-Node *Firstcreatstack();
-/**
- * @brief 入栈
- *
- */
-void push_linkedliststack();
-/**
- * @brief 出栈
- *
- */
-void pop_linkedliststack();
-/**
- * @brief 顶部元素
- *
- */
-int top_linkedliststack();
-
-/**
- * @brief 判断是否为空栈
- * 
- */
-int Isempty_linkedliststack();
-
-int main()
-{
-
-    push_linkedlist();
-    push_linkedlist();
-    push_linkedlist();
-    for (int i = 0; i < 3; i++)
-    {
-       printf("%d\n",top_linkedlist());
-       pop_linkedlist();
-    }
-    
+#include"linkedliststack.h"
 
 
-
-    return 0;
-}
 
 Node *Firstcreatstack()
 {
@@ -64,11 +11,11 @@ Node *Firstcreatstack()
     return p;
 }
 
-void push_linkedliststack()
+void push_linkedliststack(Node *stack)
 {
-    if (top == NULL)
+    if (stack->next == NULL)
     {
-        top = Firstcreatstack();
+        stack->next = Firstcreatstack();
     }
     else
     {
@@ -76,44 +23,44 @@ void push_linkedliststack()
         printf("please input a number:");
         scanf("%d", &p->data);
         p->next = NULL;
-        p->next = top;
-        top = p;
+        p->next = stack->next;
+        stack->next = p;
     }
 }
 
-void pop_linkedliststack()
+void pop_linkedliststack(Node *stack)
 {
-    if (top == NULL)
+    if (stack->next == NULL)
     {
         printf("This is tmpty stack!");
         return;
     }
     else
     {
-        Node *temp = top;
-        top = top->next;
+        Node *temp = stack->next;
+        stack->next = stack->next->next;
         free(temp);
         temp = NULL;
     }
 }
 
-int top_linkedliststack()
+int top_linkedliststack(Node *stack)
 {
-    if (top == NULL)
+    if (stack->next == NULL)
     {
         printf("This is tmpty stack:");
         return 0;
     }
     else
     {
-        return top->data;
+        return stack->next->data;
     }
 }
 
 
-int Isempty_linkedliststack()
+int Isempty_linkedliststack(Node *stack)
 {
-    if (top == NULL)
+    if (stack->next == NULL)
     {
         return 1;
     }
