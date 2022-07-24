@@ -18,7 +18,7 @@ typedef struct linkedlistqueue
 
 //最后需要给Queue free()释放空间 
 
-
+linkedlistqueue* Init_queue();
 /**
  * @brief 创建第一个队列
  *

@@ -2,6 +2,14 @@
 
 
 
+linkedlistqueue* Init_queue()
+{
+    linkedlistqueue *p = malloc(sizeof(linkedlistqueue));
+    p->front=NULL;
+    p->rear=NULL;
+    return p;
+}
+
 void Firstcreat_linkedlistqueue(linkedlistqueue *linkedlistqueu)
 {
     Node *p = malloc(sizeof(Node));
