@@ -9,8 +9,10 @@ int main()
     root = Insert_BST(root, 151);
     root = Insert_BST(root, 1);
     Midordertraverse(root);
+    printf("\n");
     root = Delete_BST(root, 5);
     Midordertraverse(root);
+    printf("\n");
     LevelorderTraverse(root);
     return 0;
 }
