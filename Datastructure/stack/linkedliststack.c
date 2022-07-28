@@ -1,27 +1,23 @@
-#include"linkedliststack.h"
+#include "linkedliststack.h"
 
-
-
-Node *Firstcreatstack()
+Node *Firstcreatstack(Elemtype data)
 {
     struct Node *p = (Node *)malloc(sizeof(Node));
-    printf("please input a number:");
-    scanf("%d", &p->data);
+    p->data = data;
     p->next = NULL;
     return p;
 }
 
-void push_linkedliststack(Node *stack)
+void push_linkedliststack(Node *stack, Elemtype data)
 {
     if (stack->next == NULL)
     {
-        stack->next = Firstcreatstack();
+        stack->next = Firstcreatstack(data);
     }
     else
     {
         struct Node *p = (Node *)malloc(sizeof(Node));
-        printf("please input a number:");
-        scanf("%d", &p->data);
+        p->data = data;
         p->next = NULL;
         p->next = stack->next;
         stack->next = p;
@@ -44,7 +40,7 @@ void pop_linkedliststack(Node *stack)
     }
 }
 
-int top_linkedliststack(Node *stack)
+Elemtype top_linkedliststack(Node *stack)
 {
     if (stack->next == NULL)
     {
@@ -57,7 +53,6 @@ int top_linkedliststack(Node *stack)
     }
 }
 
-
 int Isempty_linkedliststack(Node *stack)
 {
     if (stack->next == NULL)
@@ -68,5 +63,4 @@ int Isempty_linkedliststack(Node *stack)
     {
         return 0;
     }
-    
 }

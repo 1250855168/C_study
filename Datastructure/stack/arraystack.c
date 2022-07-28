@@ -18,7 +18,7 @@ void Iint_arraystack(struct Arraystack *arraystack)
     arraystack->top = -1;
 }
 
-void push_arraystack(struct Arraystack *arraystack, int x)
+void push_arraystack(struct Arraystack *arraystack, Elemtype x)
 {
     if (arraystack->top == MAX)
     {
@@ -42,7 +42,7 @@ void Pop_arraystack(struct Arraystack *arraystack)
     }
 }
 
-int top_arraystack(struct Arraystack *arraystack)
+Elemtype top_arraystack(struct Arraystack *arraystack)
 {
     if (Isempty_arraystack(arraystack))
     {

@@ -2,14 +2,8 @@
 #include "BST.h"
 #include"linkedlistqueue.h"
 
-// BST *creat_BST()
-// {
-//     BST *root = malloc(sizeof(BST));
-//     root->next = NULL;
-//     return root;
-// }
 
-struct Treenode *Insert_BST(struct Treenode *root, int data)
+struct Treenode *Insert_BST(struct Treenode *root, Elemtype data)
 {
     if (root == NULL)
     {
@@ -77,7 +71,7 @@ void Lastordertraverse(struct Treenode *root)
     return;
 }
 
-int Maxleft_BST(struct Treenode *root)
+Elemtype Maxleft_BST(struct Treenode *root)
 {
     struct Treenode *temp = root;
     while (temp != NULL && temp->right != NULL)
@@ -87,7 +81,7 @@ int Maxleft_BST(struct Treenode *root)
     return temp->data;
 }
 
-struct Treenode *Delete_BST(struct Treenode *root, int data)
+struct Treenode *Delete_BST(struct Treenode *root, Elemtype data)
 {
 
     if (root == NULL)
@@ -120,7 +114,7 @@ struct Treenode *Delete_BST(struct Treenode *root, int data)
     }
     else
     {
-        int temp = Maxleft_BST(root->left);
+        Elemtype temp = Maxleft_BST(root->left);
         root->data = temp;
         root->left = Delete_BST(root, temp);
     }
