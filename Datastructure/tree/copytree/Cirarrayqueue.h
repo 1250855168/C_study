@@ -2,12 +2,15 @@
 #define CIRARRAYQUEUE_H
 #include <stdio.h>
 #include <stdlib.h>
+#include"BST.h"
 
 #define MAX 10
 
+#define Element Treenode* 
+
 typedef struct Cirarrayqueue
 {
-    int array[MAX];
+    Element array[MAX];
     int front;
     int rear;
 } Cirarrayqueue;
@@ -22,7 +25,7 @@ void Init_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue);
  *
  * @param cirarrayqueue
  */
-void push_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue, int x);
+void push_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue, Element x);
 /**
  * @brief 出队列
  *
@@ -32,7 +35,7 @@ void Pop_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue);
  * @brief 队列的头元素
  *
  */
-int front_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue);
+Element front_Cirarrayqueue(struct Cirarrayqueue *cirarrayqueue);
 
 /**
  * @brief 判断循环队列是否为空
