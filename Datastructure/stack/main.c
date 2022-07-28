@@ -1,19 +1,17 @@
-#include "linkedliststack.h"
+#include "arraystack.h"
 
 int main()
 {
-    Node *stack = malloc(sizeof(Node));
-    stack->next = NULL;
+    Arraystack stack;
+    Iint_arraystack(&stack);
     for (int i = 0; i < 5; i++)
     {
-        push_linkedliststack(stack);
+        push_arraystack(&stack, i);
     }
     for (int i = 0; i < 5; i++)
     {
-        printf("%d\n", top_linkedliststack(stack));
-        pop_linkedliststack(stack);
+        printf("%d\n", top_arraystack(&stack));
+        Pop_arraystack(&stack);
     }
-    free(stack);
-    stack=NULL;
     return 0;
 }

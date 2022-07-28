@@ -5,9 +5,10 @@
 #include <stdlib.h>
 
 #define MAX 10
+typedef int Elemtype;
 typedef struct Arraystack
 {
-    int array[MAX];
+    Elemtype array[MAX];
     int top;
 } Arraystack;
 /**
@@ -21,7 +22,7 @@ void Iint_arraystack(struct Arraystack *arraystack);
  *
  * @param arraystack
  */
-void push_arraystack(struct Arraystack *arraystack, int x);
+void push_arraystack(struct Arraystack *arraystack, Elemtype x);
 
 /**
  * @brief 出栈
@@ -35,7 +36,7 @@ void Pop_arraystack(struct Arraystack *arraystack);
  * @param arraystack
  * @return int
  */
-int top_arraystack(struct Arraystack *arraystack);
+Elemtype top_arraystack(struct Arraystack *arraystack);
 /**
  * @brief 判断是否为空栈
  *

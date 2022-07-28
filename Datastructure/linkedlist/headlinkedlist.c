@@ -1,26 +1,23 @@
-#include"headlinkedlist.h"
+#include "headlinkedlist.h"
 
-
-Node *Firstcreat()
+Node *Firstcreat(Elemtype data)
 {
     struct Node *p = (Node *)malloc(sizeof(Node));
-    printf("please input a number:");
-    scanf("%d", &p->data);
+    p->data = data;
     p->next = NULL;
     return p;
 }
 
-void Creatlinkedlist(Node *head)
+void Insert_linkedlist(Node *head,Elemtype data)
 {
     if (head->next == NULL)
     {
-        head->next = Firstcreat(head);
+        head->next = Firstcreat(data);
     }
     else
     {
         struct Node *p = (Node *)malloc(sizeof(Node));
-        printf("please input a number:");
-        scanf("%d", &p->data);
+        p->data = data;
         p->next = NULL;
         p->next = head->next;
         head->next = p;
@@ -30,7 +27,7 @@ void Creatlinkedlist(Node *head)
 void PrintLinkedlist(Node *head)
 {
     Node *current = head->next;
-    while (current!= NULL)
+    while (current != NULL)
     {
         printf("%d\n", current->data);
         current = current->next;
@@ -51,7 +48,7 @@ void FreeLinkedlist(Node *head)
     head = NULL;
 }
 
-int List_back(Node *head)
+Elemtype List_back(Node *head)
 {
     Node *current = head->next;
     while (current->next != NULL)
@@ -72,7 +69,7 @@ void Pop_back(Node *head)
     free(temp->next);
     temp->next = NULL;
 }
-int list_front(Node *head)
+Elemtype list_front(Node *head)
 {
     if (head->next == NULL)
     {
@@ -84,17 +81,17 @@ int list_front(Node *head)
     }
 }
 
-int Pop_front(Node *head)
+void Pop_front(Node *head)
 {
     if (head->next == NULL)
     {
-        return 0;
+        return ;
     }
     else
     {
-        Node*temp=head->next;
+        Node *temp = head->next;
         head = head->next->next;
         free(temp);
-        temp=NULL;
+        temp = NULL;
     }
 }

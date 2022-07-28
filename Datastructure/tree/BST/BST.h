@@ -9,11 +9,11 @@
 
 
 
-
+typedef int Elemtype;
 
 typedef struct Treenode
 {
-    int data;
+    Elemtype data;
     struct Treenode *left;
     struct Treenode *right;
 } Treenode;
@@ -31,7 +31,7 @@ typedef struct Treenode
  * @brief 插入一个二叉排序树
  * 
  */
-struct Treenode *Insert_BST(struct Treenode *root, int data);
+struct Treenode *Insert_BST(struct Treenode *root, Elemtype data);
 
 /**
  * @brief 中序遍历
@@ -66,11 +66,11 @@ void LevelorderTraverse(struct Treenode *root);
  * @param root 
  * @return Element 
  */
-int Maxleft_BST(struct Treenode *root);
+Elemtype Maxleft_BST(struct Treenode *root);
 /**
  * @brief 删除一个树的结点
  * 
  */
-struct Treenode *Delete_BST(struct Treenode *root, int data);
+struct Treenode *Delete_BST(struct Treenode *root, Elemtype data);
 
 #endif

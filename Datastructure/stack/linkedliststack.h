@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+typedef int Elemtype;
+
 typedef struct Node
 {
-    int data;
+    Elemtype data;
     struct Node *next;
 } Node;
 
@@ -20,12 +23,12 @@ typedef struct Node
  * @param data 接收的数据
  * @return Node* 返回一个struct Node *
  */
-Node *Firstcreatstack();
+Node *Firstcreatstack(Elemtype data);
 /**
  * @brief 入栈
  *
  */
-void push_linkedliststack(Node *stack);
+void push_linkedliststack(Node *stack,Elemtype data);
 /**
  * @brief 出栈
  *
@@ -35,7 +38,7 @@ void pop_linkedliststack(Node *stack);
  * @brief 顶部元素
  *
  */
-int top_linkedliststack(Node *stack);
+Elemtype top_linkedliststack(Node *stack);
 
 /**
  * @brief 判断是否为空栈
