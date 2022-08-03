@@ -6,7 +6,8 @@
             "command": "G:\\Work_code\\x86_64-8.1.0-release-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",  // 编译器的路径，须跟你自己的电脑相符
             "args": [  // 编译器执行时的参数，跟手动编译时输入的内容基本一致，主要是多了-g参数，以加入调试信息
                 "-g",
-                "${file}",
+                "C:\\Users\\CHENMENG\\Desktop\\VScode\\VScode\\VScodeC\\My_project\\Datastructure\\tree\\AVL\\AV_tree.c",
+                "C:\\Users\\CHENMENG\\Desktop\\VScode\\VScode\\VScodeC\\My_project\\Datastructure\\tree\\AVL\\main.c",
                 "-o",
                 "${fileDirname}\\a.out"
             ],

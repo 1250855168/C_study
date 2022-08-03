@@ -4,11 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-// #define int Element
-
-
-
 typedef int Elemtype;
 
 typedef struct Treenode
