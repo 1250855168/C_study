@@ -13,7 +13,7 @@ Graph *CreateGraph()
         scanf("%c",&G->vexs[i]);
     }
 
-    memset(G->adj,0,sizeof(EdgeType)*MAXVEX*MAXVEX);
+    memset(G->adj,0,sizeof(EdgeType)*MAXVEX*MAXVEX);//初始化边为0
 
     for (size_t k = 0; k < G->numEdges; k++)
     {
@@ -32,13 +32,13 @@ Graph *CreateGraph()
 void PrintGraph(Graph *G )
 {
     printf("顶点信息：");
-    for (size_t i = 0; i < G->numVertexes; i++)
+    for (size_t i = 0; i < G->numVertexes; i++)//打印顶点
     {
         printf("%c ",G->vexs[i]);
     }
     
     printf("邻接矩阵：\n");
-    for (size_t i = 0; i < G->numVertexes; i++)
+    for (size_t i = 0; i < G->numVertexes; i++)//打印图的有效点
     {
         for (size_t j = 0; j < G->numVertexes; j++)
         {
