@@ -61,14 +61,14 @@ struct AVL *Delete_AVL(struct AVL *root, Elemtype data);
  * @brief 左转
  *
  */
-struct AVL *Turn_left(struct AVL *root);
+void Turn_left(struct AVL **root) ;
 
 /**
  * @brief 右转
  *
  * @param root
  */
-struct AVL * Turn_right(struct AVL *root);
+void Turn_right(struct AVL **root);
 
 /**
  * @brief 计算结点是否平衡

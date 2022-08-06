@@ -9,17 +9,9 @@ int main()
     printf("%d\n",root->height);
     Insert_AVL(&root, 18);
     printf("%d\n",root->height);
-    Insert_AVL(&root, 151);
-    printf("%d\n",root->height);
-    Insert_AVL(&root, 1);
-    Midordertraverse(root);
+    // Insert_AVL(&root, 151);
     // printf("%d\n",root->height);
-    // Midordertraverse(root);
-    // printf("\n");
-    // printf("%d\n", Height(root));
-    // root = Delete_AVL(root, 151);
-    // Midordertraverse(root);
-    // printf("\n");
-    // printf("%d\n", Height(root));
+    // Insert_AVL(&root, 1);
+    Midordertraverse(root);
     return 0;
 }

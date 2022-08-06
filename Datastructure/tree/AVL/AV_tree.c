@@ -26,7 +26,7 @@ struct AVL *Insert_AVL(struct AVL **root, Elemtype data)
         {
             if (data > (*root)->right->data)
             {
-                // RR转
+                Turn_left(root);
             }
             else
             {
@@ -62,8 +62,8 @@ void Midordertraverse(const struct AVL *root) //中序遍历
     {
         return;
     }
-    Midordertraverse(root->left);
     printf("%d\n", root->data);
+    Midordertraverse(root->left);
     Midordertraverse(root->right);
 }
 
@@ -132,21 +132,13 @@ struct AVL *Delete_AVL(struct AVL *root, Elemtype data) //删除一个结点
     return root;
 }
 
-struct AVL *Turn_left(struct AVL *root) //进行左转
+void Turn_left(struct AVL **root) //进行左转
 {
-    struct AVL *temp1 = NULL;
-    struct AVL *temp2 = NULL;
-    if (root != NULL)
-    {
-        temp1 = root->right; //保存该节点的右结点
-    }
-    if (temp1 != NULL)
-    {
-        temp2 = root->right->left; //保存上面结点的左结点
-    }
-    root->right = temp2; //重新交换指向 形成左转
-    temp1->left = root;
-    return temp1;
+    struct AVL *temp1 = (*root)->right;
+    struct AVL *temp2 = *root;
+    temp2->right=temp1->left;
+    temp1->left=temp2;    //重新交换指向 形成左转
+    *root = temp1;
 }
 
 void Turn_right(struct AVL **root) //进行右转
@@ -161,6 +153,7 @@ void Turn_right(struct AVL **root) //进行右转
     {
         temp2 = temp1->right; //保存上面结点的右结点
     }
-    temp1->right = root; //重新交换指向 形成右转
-    (*root)->left = temp2;
+    temp1->right = *root; //重新交换指向 形成右转
+    *root = temp1;
+    temp1 = temp2;
 }
