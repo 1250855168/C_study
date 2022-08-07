@@ -30,4 +30,13 @@ Graph *CreateGraph();
  */
 void PrintGraph(Graph *G );
 
+
+/**
+ * @brief DFS深度优先 
+ * 
+ */
+void DFS(Graph *G,int i);
+
+void DFSTraverse(Graph *G);
+
 #endif
