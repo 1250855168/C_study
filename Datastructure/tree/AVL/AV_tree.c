@@ -26,11 +26,12 @@ struct AVL *Insert_AVL(struct AVL **root, Elemtype data)
         {
             if (data > (*root)->right->data)
             {
-                Turn_left(root);
+                Turn_left(root); // LL情况
             }
             else
             {
-                // RL转
+                Turn_right(&(*root)->right); // LR情况
+                Turn_left(root);
             }
         }
     }
@@ -45,11 +46,12 @@ struct AVL *Insert_AVL(struct AVL **root, Elemtype data)
         {
             if (data > (*root)->right->data)
             {
-                // LL转
+                Turn_right(root); // RR情况
             }
             else
             {
-                // LR转
+                Turn_right(&(*root)->left); // RL情况
+                Turn_left(root);
             }
         }
     }
@@ -136,24 +138,36 @@ void Turn_left(struct AVL **root) //进行左转
 {
     struct AVL *temp1 = (*root)->right;
     struct AVL *temp2 = *root;
-    temp2->right=temp1->left;
-    temp1->left=temp2;    //重新交换指向 形成左转
+    temp2->right = temp1->left; //重新交换指向 形成左转
+    temp1->left = temp2;
     *root = temp1;
+    //更新高度
+    if ((*root)->left != NULL)
+    {
+        (*root)->left->height = (Get_Height((*root)->left->left), Get_Height((*root)->left->right)) + 1;
+    }
+
+    if ((*root)->right != NULL)
+    {
+        (*root)->right->height = (Get_Height((*root)->right->left), Get_Height((*root)->right->right)) + 1;
+    }
 }
 
 void Turn_right(struct AVL **root) //进行右转
 {
-    struct AVL *temp1 = NULL;
-    struct AVL *temp2 = NULL;
-    if (root != NULL)
-    {
-        temp1 = (*root)->left; //保存该节点的左结点
-    }
-    if (temp1 != NULL)
-    {
-        temp2 = temp1->right; //保存上面结点的右结点
-    }
-    temp1->right = *root; //重新交换指向 形成右转
+    struct AVL *temp1 = (*root)->left;
+    struct AVL *temp2 = *root;
+    temp2->left = temp1->right; //重新交换指向 形成右转
+    temp1->right = *root;
     *root = temp1;
-    temp1 = temp2;
+    //更新高度
+    if ((*root)->left != NULL)
+    {
+        (*root)->left->height = (Get_Height((*root)->left->left), Get_Height((*root)->left->right)) + 1;
+    }
+
+    if ((*root)->right != NULL)
+    {
+        (*root)->right->height = (Get_Height((*root)->right->left), Get_Height((*root)->right->right)) + 1;
+    }
 }

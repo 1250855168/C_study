@@ -4,14 +4,17 @@ int main()
 {
     struct AVL *root = NULL;
     Insert_AVL(&root, 10);
-    printf("%d\n",root->height);
+    Midordertraverse(root);
     Insert_AVL(&root, 15);
-    printf("%d\n",root->height);
-    Insert_AVL(&root, 18);
-    printf("%d\n",root->height);
-    // Insert_AVL(&root, 151);
-    // printf("%d\n",root->height);
-    // Insert_AVL(&root, 1);
+    Midordertraverse(root);
+    Insert_AVL(&root, 14);
+    Midordertraverse(root);
+    Insert_AVL(&root, 9);
+    Midordertraverse(root);
+    Insert_AVL(&root, 8);
+    Midordertraverse(root);
+    Insert_AVL(&root, 7);
+    Midordertraverse(root);
     Midordertraverse(root);
     return 0;
 }
